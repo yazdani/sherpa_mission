@@ -1,0 +1,1 @@
+string interpreted_str
