@@ -4,7 +4,7 @@ __author__= 'Fereshta Yazdani'
 
 import socket
 import rospy
-from tldl2Ros.msg import language_interpreter
+from language_interpreter.msg import tldl2Ros
 import os
 import string
 
@@ -18,7 +18,7 @@ def TLDL_publisher():
     
     pub = rospy.Publisher('tldl2Ros', tldl2Ros, queue_size=10)
     rospy.init_node('tldl2Ros')
-    msg= TLDL2Ros()
+    msg= tldl2Ros()
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(("yazdani", 4321))
@@ -31,7 +31,6 @@ def TLDL_publisher():
               data = daty.recv(4096)
               if data:
                 pub.publish(data)
-                print("data is:")
                 print(data)
               else:
                 break
