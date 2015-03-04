@@ -1,2 +1,2 @@
 # sherpa_mission
-This package includes the catkin packages depended on the EU project sherpa related tasks
+This package includes the catkin packages depend on the EU project sherpa
