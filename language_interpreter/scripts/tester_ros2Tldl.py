@@ -16,7 +16,7 @@ def tester():
     pub1 = rospy.Publisher('multimodal_command',testmsg, queue_size=10)
     rospy.init_node('tf_xsens')
     listener = tf.TransformListener()
-    rate = rospy.Rate(0.1) 
+    rate = rospy.Rate(0.5) 
 
     while not rospy.is_shutdown():
         try:
@@ -28,8 +28,17 @@ def tester():
  
         cmd1 = geometry_msgs.msg.Transform()
         cmd2 = geometry_msgs.msg.Transform()
+        cmd3 = geometry_msgs.msg.Transform()
+        cmd4 = geometry_msgs.msg.Transform()
         str1 = std_msgs.msg.String()
         str1 = "Go there!"
+        str2 = std_msgs.msg.String()
+        str2 = "Where are victims!"
+        str3 = std_msgs.msg.String()
+        str3 = "Look there!"
+        str4 = std_msgs.msg.String()
+        str4 = "Where are you?"
+       
         cmd1.translation.x = trans[0]
         cmd1.translation.y = trans[-1]
         cmd1.translation.z = trans[-2]
@@ -44,14 +53,33 @@ def tester():
         cmd2.rotation.y = rot1[-1]
         cmd2.rotation.z = rot1[-2]
         cmd2.rotation.w = rot1[-3]
-        test1 = str1
-        test1 = cmd1
-        test1 = cmd2
+        cmd3.translation.x = 0
+        cmd3.translation.y = 0
+        cmd3.translation.z = 0
+        cmd3.rotation.x = 0
+        cmd3.rotation.y = 0
+        cmd3.rotation.z = 0
+        cmd3.rotation.w = 0
+        cmd4.translation.x = 0
+        cmd4.translation.y = 0
+        cmd4.translation.z = 0
+        cmd4.rotation.x = 0
+        cmd4.rotation.y = 0
+        cmd4.rotation.z = 0
+        cmd4.rotation.w = 0
+    
         pub1.publish(str1, cmd1, cmd2)
         rospy.loginfo(str1)
         rate.sleep()
-
-
+        pub1.publish(str2, cmd3, cmd4)
+        rospy.loginfo(str2)
+        rate.sleep()
+        pub1.publish(str3, cmd1, cmd2)
+        rospy.loginfo(str3)
+        rate.sleep()
+        pub1.publish(str4, cmd3, cmd4)
+        rospy.loginfo(str4)
+        rate.sleep()
 
     # while not rospy.is_shutdown():
     #     hello_str1 = "Go left!"
