@@ -3,7 +3,7 @@
 
 __author__= 'Fereshta Yazdani'
 
-#import socket
+import socket, pickle
 import rospy
 import roslib
 from language_interpreter.msg import testmsg
@@ -13,10 +13,13 @@ import geometry_msgs.msg
 import std_msgs.msg
 
 def tester():
+    sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    server_address = ("yazdani",5678)
+    sock.connect(server_address)
     pub1 = rospy.Publisher('multimodal_command',testmsg, queue_size=10)
     rospy.init_node('tf_xsens')
     listener = tf.TransformListener()
-    rate = rospy.Rate(0.5) 
+    rate = rospy.Rate(0.1) 
 
     while not rospy.is_shutdown():
         try:
@@ -67,18 +70,40 @@ def tester():
         cmd4.rotation.y = 0
         cmd4.rotation.z = 0
         cmd4.rotation.w = 0
-    
+
+        iterator = ([str1, cmd1, cmd2])       
+        data = pickle.dumps(iterator)
+        sock.recv(1024)
+        sock.send(data)
         pub1.publish(str1, cmd1, cmd2)
         rospy.loginfo(str1)
+        iterator = ([])
         rate.sleep()
+        iterator = ([str2, cmd3, cmd4])       
+        data = pickle.dumps(iterator)
+        sock.recv(1024)   
+        sock.send(data)
         pub1.publish(str2, cmd3, cmd4)
         rospy.loginfo(str2)
+        iterator = ([])
         rate.sleep()
+
+        iterator = ([str3, cmd1, cmd2])       
+        data = pickle.dumps(iterator)
+        sock.recv(1024)
+        sock.send(data)
         pub1.publish(str3, cmd1, cmd2)
+        iterator = ([])
         rospy.loginfo(str3)
         rate.sleep()
+
+        iterator = ([str4, cmd3, cmd4])       
+        data = pickle.dumps(iterator)
+        sock.recv(1024)
+        sock.send(data)
         pub1.publish(str4, cmd3, cmd4)
         rospy.loginfo(str4)
+        iterator = ([])
         rate.sleep()
 
     # while not rospy.is_shutdown():
