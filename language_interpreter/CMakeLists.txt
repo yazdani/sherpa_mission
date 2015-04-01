@@ -50,11 +50,11 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
    FILES
  #  ros2Tldl.msg
+   connector.msg
    StringMultiArrays.msg
    StringMultiArray.msg
-   tldl2Ros.msg
-   testmsg.msg
-   checkmsg.msg
+#   testmsg.msg
+#   checkmsg.msg
  )
 
 ## Generate services in the 'srv' folder
