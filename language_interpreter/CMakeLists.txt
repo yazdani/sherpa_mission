@@ -50,9 +50,9 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
    FILES
  #  ros2Tldl.msg
-   connector.msg
-   StringMultiArrays.msg
-   StringMultiArray.msg
+   connect.msg
+#   StringMultiArrays.msg
+#   StringMultiArray.msg
 #   testmsg.msg
 #   checkmsg.msg
  )

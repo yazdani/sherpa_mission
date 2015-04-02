@@ -2,10 +2,18 @@
 
 import socket, pickle
 import rospy
-from language_interpreter.msg import connector
+import roslib
+import xml.etree.ElementTree as ET 
+from language_interpreter.msg import connect
+from geometry_msgs.msg import Vector3
+from std_msgs.msg import Float64
+import tf
 import sys
-import std_msgs.msg 
+import os
 import geometry_msgs.msg
+import std_msgs.msg
+import language_interpreter.msg
+
 
 str2 = 0
 str1 = 0
@@ -15,20 +23,71 @@ c_test = 0
 tr1 = 0
 tr2 = 0
 pub = 0
+vec = 0
+digit = Float64()
+array = []
+var = ''
+
+def callback(data):
+    get_Etree(data)
+    socket_conTest()
+    pub.publish(str1, str2, tr1, tr2)
+
+def get_Etree(data):
+    global vec
+    global digit
+    global var
+    vec = Vector3()
+    vec.x = 0.0
+    vec.y = 0.0
+    vec.z = 0.0
+    array = []
+    #Reading the data from a string
+    root = ET.fromstring(data.data)
+    
+    for child in root:
+        
+        for child2 in child:
+            child3 = child2.tag
+            child4 = child3.split("}")
+            array.append([child4[1], child2.text])
+    
+    for pointer in array:
+        if pointer[0] == "command":
+            if pointer[1] == "there":
+                var = "go " + pointer[1]
+            else:
+                var = pointer[1]
+        if pointer[0] == "direction":
+            vec_array = pointer[1].split(" ")
+            vec.x = float(vec_array[0])
+            vec.y = float(vec_array[1])
+            vec.z = float(vec_array[2])
+            
+        if pointer[0] == "data":
+            digit.data = float(pointer[1])
+    
+      
+def socket_conTest():
+    global tr1
+    global tr2    
+    tr1 = vec 
+    tr2 = digit
+    socket_con(var)   
+    check_command_type(var)
+
 def socket_con(date):  
     global str2
-   # digit1 = date.str
-    digit = date + '\n'
-    #digit = date
+    tmp = date + '\n'
     if digit:
-        c.send(digit)
+        c.send(tmp)
         sys.stdout.flush()
         str2 = c.recv(1024)
     else:
         print("")
         
-        
-def check_com(date):
+  
+def check_command_type(date):
     global str1
     str1 = date 
     data = str1.split(" ")
@@ -51,52 +110,32 @@ def check_com(date):
     else:
         str1 = "order"
         
-def callback():
-    socket_conTest()
-    pub.publish(str1, str2, tr1)
+
     
-    
-def socket_conTest():
-    global tr1
-    #global tr2
-    #global tr3
-    c_test.send("ok\n")
-    sys.stdout.flush()
-    data = c_test.recv(1024)
-    date = pickle.loads(data)
-    tr1 = date[1]
-    socket_con(date[0])    
-    check_com(date[0])
+
     
     
 def connector():
-    print "connector"
     global c
     global c_test
     global pub
     rospy.init_node('tf_transforms')
-    pub = rospy.Publisher('interpreted_command',connector, queue_size=10)
-    s_test = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    s_test.bind(("yazdani", 5678))
-    s_test.listen(1)
-    c_test,address_test = s_test.accept()
-    print "first connection"
+    pub = rospy.Publisher('interpreted_command',connect, queue_size=10)
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind(("yazdani", 1234))
+    s.bind(("yazdani-PC", 1234))
     s.listen(1)
-    server = "yazdani"
+    server = "yazdani-PC"
     c, address = s.accept()
-    print "second connection"
-    while True:
-        callback()
+    # while True:
+    #     callback()
        
-        # rospy.Subscriber("multimodal_command", testmsg, callback)
-        # rospy.spin()
+    rospy.Subscriber("HRIOut", std_msgs.msg.String, callback)
+    rospy.spin()
      
     s.shutdown(socket.SHUT_RDWR)
     s.close()
-    s_test.shutdown(socket.SHUT_RDWR)
-    s_test.close()  
+    # s_test.shutdown(socket.SHUT_RDWR)
+    # s_test.close()  
     
 if __name__ == '__main__':
     connector()
