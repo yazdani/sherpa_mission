@@ -24,19 +24,27 @@ tr1 = 0
 tr2 = 0
 pub = 0
 vec = 0
-digit = Float64()
+digit = 0
 array = []
 var = ''
+select = ''
+tmp = ''
 
 def callback(data):
     get_Etree(data)
     socket_conTest()
-    pub.publish(str1, str2, tr1, tr2)
+    pub.publish(str1, str2, tr3, tr1, tr2)
 
 def get_Etree(data):
     global vec
     global digit
+    global select
     global var
+    global tmp 
+    digit = Vector3()
+    digit.x = 0
+    digit.y = 0
+    digit.z = 0
     vec = Vector3()
     vec.x = 0.0
     vec.y = 0.0
@@ -52,6 +60,7 @@ def get_Etree(data):
             child4 = child3.split("}")
             array.append([child4[1], child2.text])
     
+    #preliminary add
     for pointer in array:
         if pointer[0] == "command":
             if pointer[1] == "there":
@@ -63,14 +72,39 @@ def get_Etree(data):
             vec.x = float(vec_array[0])
             vec.y = float(vec_array[1])
             vec.z = float(vec_array[2])
+        if pointer[0] == "selected":
+            select = pointer[1]
             
+        
         if pointer[0] == "data":
-            digit.data = float(pointer[1])
-    
+            tmp = var.split(" ")          
+            temp = tmp[-1]
+            if temp == "off" or temp == "up":
+                digit.z = float(pointer[1])
+                digit.x = 0.0
+                digit.y = 0.0
+            if temp == "down":
+                digit.z = (-1) * float(pointer[1])
+                digit.x = 0.0
+                digit.y = 0.0
+            if temp == "right":
+                digit.y = float(pointer[1])
+                digit.x = 0.0
+                digit.z = 0.0
+            if temp == "left":
+                digit.y = (-1) * float(pointer[1])
+                digit.x = 0.0
+                digit.z = 0.0
+            if temp == "there":
+                digit.x = float(pointer[1])
+                digit.y = 0.0
+                digit.z = 0.0
       
 def socket_conTest():
     global tr1
-    global tr2    
+    global tr2   
+    global tr3
+    tr3 = select
     tr1 = vec 
     tr2 = digit
     socket_con(var)   

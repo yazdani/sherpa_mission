@@ -1,4 +1,5 @@
 string command
-string interpret
+string interpretation
+string selection
 geometry_msgs/Vector3 vec
-std_msgs/Float64 default
+geometry_msgs/Vector3 offset
