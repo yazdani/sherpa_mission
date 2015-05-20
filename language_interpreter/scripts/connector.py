@@ -156,16 +156,14 @@ def connector():
     rospy.init_node('tf_transforms')
     pub = rospy.Publisher('interpreted_command',connect, queue_size=10)
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind(("yazdani-PC", 1234))
+    s.bind(("yazdani", 1234))
     s.listen(1)
-    server = "yazdani-PC"
+    server = "yazdani"
     c, address = s.accept()
     # while True:
     #     callback()
-       
     rospy.Subscriber("HRIOut", std_msgs.msg.String, callback)
     rospy.spin()
-     
     s.shutdown(socket.SHUT_RDWR)
     s.close()
     # s_test.shutdown(socket.SHUT_RDWR)
