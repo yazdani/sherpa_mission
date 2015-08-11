@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE rdf:RDF [
+  <!ENTITY all "http://sweet.jpl.nasa.gov/2.3/sweetAll.owl">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY knowrob "http://knowrob.org/kb/knowrob.owl#">
+  <!ENTITY obj "http://sweet.jpl.nasa.gov/2.3/reprSpaceGeometry.owl">
+ <!ENTITY struc "http://sweet.jpl.nasa.gov/2.3/matrFacility.owl#">
+ <!ENTITY graph "http://sweet.jpl.nasa.gov/2.3/reprMathGraph.owl">
+]>
+
+<rdf:RDF xml:base="&all;"
+         xmlns:all="&all;"
+         xmlns:owl="&owl;"
+         xmlns:rdf="&rdf;"
+         xmlns:rdfs="&rdfs;"
+	 xmlns:xsd = "&xsd;"
+	 xmlns:knowrob="&knowrob;"
+	 xmlns:obj="&obj;"
+	 xmlns:struc="&struc;"
+	 xmlns:graph = "&graph;"
+>
+
+<!-- Import Ontologies -->
+  <owl:Ontology rdf:about="" owl:versionInfo="2.3">
+    <rdfs:label>SWEET Ontology</rdfs:label>
+    <owl:imports rdf:resource="package://knowrob_cognitive_map/owl/map00.owl"/>
+  </owl:Ontology>
+
+  <!--
+///////////////////////////////////////////////////////////////////////////////////////
+//
+// Object Properties
+//
+///////////////////////////////////////////////////////////////////////////////////////
+-->
+ <!-- &knowrob;describedInMap -->
+<owl:ObjectProperty rdf:about="&knowrob;describedInMap"/>
+
+ <!-- http://knowrob.org/kb/knowrob.owl#eventOccursAt -->
+
+    <owl:ObjectProperty rdf:about="&knowrob;eventOccursAt"/>
+    
+
+ <!-- http://knowrob.org/kb/knowrob.owl#objectActedOn -->
+
+    <owl:ObjectProperty rdf:about="&knowrob;objectActedOn"/>
+    
+
+ <!-- http://knowrob.org/kb/knowrob.owl#startTime -->
+
+    <owl:ObjectProperty rdf:about="&knowrob;startTime"/>
+
+ <!-- http://knowrob.org/kb/knowrob.owl#endTime -->
+
+    <owl:ObjectProperty rdf:about="&knowrob;endTime"/>
+
+ <!-- http://knowrob.org/kb/knowrob.owl#hasGeometricalShape -->
+
+    <owl:ObjectProperty rdf:about="&knowrob;hasGeometricalShape">
+      <rdfs:domain rdf:resource="&obj;#Polygon"/>
+    </owl:ObjectProperty>
+
+<!--
+///////////////////////////////////////////////////////////////////////////////////////
+//
+// Data properties
+//
+///////////////////////////////////////////////////////////////////////////////////////
+-->
+
+<!-- &knowrob;depthOfObject -->
+<owl:DatatypeProperty rdf:about="&knowrob;depthOfObject"/>
+<!-- &knowrob;heightOfObject -->
+<owl:DatatypeProperty rdf:about="&knowrob;heightOfObject"/>
+<!-- &knowrob;m00 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m00"/>
+<!-- &knowrob;m01 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m01"/>
+<!-- &knowrob;m02 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m02"/>
+<!-- &knowrob;m03 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m03"/>
+<!-- &knowrob;m10 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m10"/>
+<!-- &knowrob;m11 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m11"/>
+<!-- &knowrob;m12 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m12"/>
+<!-- &knowrob;m13 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m13"/>
+<!-- &knowrob;m20 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m20"/>
+<!-- &knowrob;m21 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m21"/>
+<!-- &knowrob;m22 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m22"/>
+<!-- &knowrob;m23 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m23"/>
+<!-- &knowrob;m30 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m30"/>
+<!-- &knowrob;m31 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m31"/>
+<!-- &knowrob;m32 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m32"/>
+<!-- &knowrob;m33 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m33"/>
+<!-- &knowrob;widthOfObject -->
+<owl:DatatypeProperty rdf:about="&knowrob;widthOfObject"/>
+<!-- &knowrob;maxJointValue -->
+<owl:DatatypeProperty rdf:about="&knowrob;maxJointValue"/>
+<!-- &knowrob;minJointValue -->
+<owl:DatatypeProperty rdf:about="&knowrob;minJointValue"/>
+<!-- &knowrob;turnRadius -->
+<owl:DatatypeProperty rdf:about="&knowrob;turnRadius"/>
+<!-- &knowrob;vectorX -->
+<owl:DatatypeProperty rdf:about="&knowrob;vectorX"/>
+<!-- &knowrob;vectorY -->
+<owl:DatatypeProperty rdf:about="&knowrob;vectorY"/>
+<!-- &knowrob;vectorZ -->
+<owl:DatatypeProperty rdf:about="&knowrob;vectorZ"/>
+
+
+ <!--
+///////////////////////////////////////////////////////////////////////////////////////
+//
+// Classes
+//
+///////////////////////////////////////////////////////////////////////////////////////
+-->
+
+    <!-- &knowrob;RotationMatrix3D -->
+     <owl:Class rdf:about="&knowrob;RotationMatrix3D"/>
+
+    <!-- &knowrob;SemanticEnvironmentMap -->
+    <owl:Class rdf:about="&knowrob;SemanticEnvironmentMap"/>
+
+    <!-- &knowrob;SemanticMapPerception -->
+    <owl:Class rdf:about="&knowrob;SemanticMapPerception"/>
+
+    <!-- &knowrob;TimePoint -->
+    <owl:Class rdf:about="&knowrob;TimePoint"/>
+
+    <!-- &knowrob;PrismaticJoint -->
+    <owl:Class rdf:about="&knowrob;PrismaticJoint"/>
+
+    <!-- &knowrob;HingedJoint -->
+    <owl:Class rdf:about="&knowrob;HingedJoint"/>
+
+    <!-- &knowrob;Vector -->
+    <owl:Class rdf:about="&knowrob;Vector"/>
+
+   
+   <owl:Class rdf:about="&knowrob;Path01">
+     <rdfs:subClassOf rdf:resource="&graph;Path"/>
+   </owl:Class>
+
+ <!--
+///////////////////////////////////////////////////////////////////////////////////////
+//
+// Individuals
+//
+///////////////////////////////////////////////////////////////////////////////////////
+-->
+
+<rdf:Description rdf:about="&knowrob;Path01">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/path/path.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description> 
+
+
+<!-- RESTAURANT -->
+  <owl:NamedIndividual rdf:about="&knowrob;Path01">
+        <rdf:type rdf:resource="&knowrob;Path01"/>
+        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
+        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:widthOfObject>
+        <knowrob:depthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:depthOfObject>
+        <knowrob:describedInMap rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap_PM582j"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;SemanticMapPerception_01">
+      <rdf:type rdf:resource="&knowrob;SemanticMapPerception"/>
+      <knowrob:startTime rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#timepoint_1399894481"/>
+      <knowrob:eventOccursAt rdf:resource="&knowrob;RotationMatrix3D_01"/>
+      <knowrob:objectActedOn rdf:resource="&knowrob;Path01"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;RotationMatrix3D_01">
+      <rdf:type rdf:resource="&knowrob;RotationMatrix3D"/>
+      <knowrob:m00 rdf:datatype="&xsd;double">1.0</knowrob:m00>
+      <knowrob:m11 rdf:datatype="&xsd;double">1.0</knowrob:m11>
+      <knowrob:m22 rdf:datatype="&xsd;double">1.0</knowrob:m22>
+      <knowrob:m33 rdf:datatype="&xsd;double">1.0</knowrob:m33>
+      <knowrob:m01 rdf:datatype="&xsd;double">0.0</knowrob:m01>
+      <knowrob:m02 rdf:datatype="&xsd;double">0.0</knowrob:m02>
+      <knowrob:m20 rdf:datatype="&xsd;double">0.0</knowrob:m20>
+      <knowrob:m10 rdf:datatype="&xsd;double">0.0</knowrob:m10>
+      <knowrob:m12 rdf:datatype="&xsd;double">0.0</knowrob:m12>
+      <knowrob:m21 rdf:datatype="&xsd;double">0.0</knowrob:m21>
+      <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
+      <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
+      <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
+      <knowrob:m03 rdf:datatype="&xsd;double">20</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">26</knowrob:m23>
+    </owl:NamedIndividual>
+<!-- END RESTAURANT-->
+
+</rdf:RDF>
+
