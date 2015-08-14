@@ -1,0 +1,10 @@
+string selected
+string type
+string command
+double data
+double[] direction
+double[] location
+double confidence
+double[] polygonal_area
+double[] segment
+Pose sample
