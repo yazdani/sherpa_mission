@@ -466,7 +466,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/ground/ground_centered2.dae</owl:hasValue>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/ground/ground1.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description> 
@@ -475,7 +475,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/wood/wood01.dae</owl:hasValue>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/wood/tree3_richtig.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description> 
@@ -484,7 +484,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/wood/wood02.dae</owl:hasValue>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/wood/Scrubs_richtig.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description> 
@@ -530,6 +530,7 @@
 <!-- END GROUND-->
 
 <!-- WOOD1 -->
+
   <owl:NamedIndividual rdf:about="&knowrob;Woodland00">
         <rdf:type rdf:resource="&knowrob;Woodland00"/>
         <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
@@ -561,9 +562,9 @@
       <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
       <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
       <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
-      <knowrob:m03 rdf:datatype="&xsd;double">21</knowrob:m03>
-      <knowrob:m13 rdf:datatype="&xsd;double">23</knowrob:m13>
-      <knowrob:m23 rdf:datatype="&xsd;double">-18</knowrob:m23>
+      <knowrob:m03 rdf:datatype="&xsd;double">0.0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0.0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">0.0</knowrob:m23>
     </owl:NamedIndividual>
 <!-- END WOOD1-->
 
@@ -600,9 +601,9 @@
       <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
       <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
       <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
-      <knowrob:m03 rdf:datatype="&xsd;double">18.0</knowrob:m03>
-      <knowrob:m13 rdf:datatype="&xsd;double">28.0</knowrob:m13>
-      <knowrob:m23 rdf:datatype="&xsd;double">-18.0</knowrob:m23>
+      <knowrob:m03 rdf:datatype="&xsd;double">0.0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0.0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">0.0</knowrob:m23>
     </owl:NamedIndividual>
 <!-- END WOOD2-->
 

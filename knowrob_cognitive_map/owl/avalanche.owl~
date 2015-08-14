@@ -8,6 +8,7 @@
   <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
   <!ENTITY knowrob "http://knowrob.org/kb/knowrob.owl#">
   <!ENTITY obj "http://sweet.jpl.nasa.gov/2.3/reprSpaceGeometry.owl">
+  <!ENTITY water "http://sweet.jpl.nasa.gov/2.3/matrWater.owl#">
 ]>
 
 <rdf:RDF xml:base="&all;"
@@ -18,6 +19,7 @@
 	 xmlns:xsd = "&xsd;"
 	 xmlns:knowrob="&knowrob;"
 	 xmlns:obj="&obj;"
+	 xmlns:water="&water;"
 >
 
 <!-- Import Ontologies -->
@@ -149,69 +151,15 @@
     <!-- &knowrob;Vector -->
     <owl:Class rdf:about="&knowrob;Vector"/>
 
-   <!-- Definition of some classes in the range of Facility (matrFacility)-->
-
-   <owl:Class rdf:about="&knowrob;AccomodationFacility">
-     <rdfs:subClassOf rdf:resource="#Facility"/>
-   </owl:Class>
-
-   <owl:Class rdf:about="&knowrob;Hotel">
-     <rdfs:subClassOf rdf:resource="&knowrob;AccomodationFacility"/>
-   </owl:Class>
-
-   <owl:Class rdf:about="&knowrob;CateringFacility">
-     <rdfs:subClassOf rdf:resource="#Facility"/>
-   </owl:Class>
-
-   <owl:Class rdf:about="&knowrob;Restaurant">
-     <rdfs:subClassOf rdf:resource="&knowrob;CateringFacility"/>
-     <owl:equivalentClass rdf:resource="&knowrob;AccomodationFacility"/>
-   </owl:Class>
-   
-   <!-- Definition of some classes in the range of Water (matrWater)-->
+    <!-- Definition of some classes in the range of Water (matrWater)-->
   
    <owl:Class rdf:about="&knowrob;SnowMass">
-     <rdfs:subClassOf rdf:resource="#Snow"/>
+     <rdfs:subClassOf rdf:resource="&water;Snow"/>
    </owl:Class>
 
    <owl:Class rdf:about="&knowrob;Avalanche">
      <rdfs:subClassOf rdf:resource="&knowrob;SnowMass"/>
    </owl:Class>
-
-   <!-- Definition of some classes in the range of Soil (realmSoil)-->
-   
-   <owl:Class rdf:about="&knowrob;GroundBase">
-     <rdfs:subClassOf rdf:resource="#Ground"/>
-   </owl:Class>
-
- 
-   <owl:Class rdf:about="&knowrob;Jura">
-     <rdfs:subClassOf rdf:resource="#Ground"/>
-   </owl:Class>
-
-  <!-- Definition of some classes in the range of Woodland (realmBiolBiome)-->
-   <owl:Class rdf:about="&knowrob;Woodland00">
-     <rdfs:subClassOf rdf:resource="#Woodland"/>
-   </owl:Class>
-
-   <owl:Class rdf:about="&knowrob;Woodland01">
-     <rdfs:subClassOf rdf:resource="#Woodland"/>
-
-   </owl:Class>
-
-  <!-- Definition of some classes in the range of Geometry (reprSpaceGeometry)-->
-
-<!--
- <owl:Class rdf:about="#Trajectory">
-    <rdfs:subClassOf rdf:resource="#Curve"/>
-    <owl:equivalentClass rdf:resource="#Path"/>
-    <rdfs:comment xml:lang="en">Curve in space tracing the points successivley occupied by a particle in motion</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="#Path"/>
-
-  <owl:Class rdf:about="#Route">
-    <rdfs:subClassOf rdf:resource="#Path"/>
-  </owl:Class>-->
 
  <!--
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -262,7 +210,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/avalanche/avalanche_centered2.dae</owl:hasValue>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/avalanche/aval1dae.dae</owl:hasValue>
 
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -301,9 +249,9 @@
       <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
       <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
       <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
-      <knowrob:m03 rdf:datatype="&xsd;double">25</knowrob:m03>
-      <knowrob:m13 rdf:datatype="&xsd;double">26</knowrob:m13>
-      <knowrob:m23 rdf:datatype="&xsd;double">-10</knowrob:m23>
+      <knowrob:m03 rdf:datatype="&xsd;double">0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">0</knowrob:m23>
     </owl:NamedIndividual>
 <!-- END AVALANCHE-->
 

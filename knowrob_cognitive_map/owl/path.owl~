@@ -207,9 +207,9 @@
       <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
       <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
       <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
-      <knowrob:m03 rdf:datatype="&xsd;double">20</knowrob:m03>
+      <knowrob:m03 rdf:datatype="&xsd;double">0</knowrob:m03>
       <knowrob:m13 rdf:datatype="&xsd;double">0</knowrob:m13>
-      <knowrob:m23 rdf:datatype="&xsd;double">26</knowrob:m23>
+      <knowrob:m23 rdf:datatype="&xsd;double">0</knowrob:m23>
     </owl:NamedIndividual>
 <!-- END RESTAURANT-->
 

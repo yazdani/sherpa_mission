@@ -1,0 +1,60 @@
+{
+	"query": [
+ 	    {
+		"q": "",
+		"text": "----- init -----"
+	    },
+	    {
+		"q": "",
+	    	"text": ""
+	    },
+	    {
+		"q": "",
+		"text": "----- Queries on the cognitive map -----"
+	    },
+	    {
+		"q": "owl_parse('package://knowrob_cognitive_map/owl/map.owl').",
+	    	"text": "Load the cognitive map and other files"
+	    },
+	    {
+		"q": "owl_individual_of(A, knowrob:'SemanticEnvironmentMap'), !, add_object_with_children(A).",
+	    	"text": "Visualize the cognitive map"
+	    },
+	     {
+		"q": "owl_parse('package://knowrob_cognitive_map/owl/avalanche.owl'), owl_individual_of(A, knowrob:'Avalanche'), add_object(A).",
+	    	"text": "How is the environment looking after the avalanche?"
+	    }, 
+	    {
+		"q": "owl_individual_of(A, knowrob:'Restaurant'), owl_direct_subclass_of(A, Obj), rdf_split_url('http://knowrob.org/kb/knowrob.owl#', TYPE, Obj).",
+	    	"text": "Show me all the different kinds of restaurants!"
+	    },
+	    {
+		"q": "owl_parse('package://knowrob_cognitive_map/owl/layer.owl'), findall(Obj, (owl_individual_of(Obj, knowrob:'System')), Objs), !, member(A, Objs), add_object_with_children(A).", 
+	    	"text": "Which different geological layers are present and what are the geological boundaries?"
+	    },
+	    {
+		"q": "mng_db('gps_traces'), task(T), task_goal(T, '(GO-TO ?LOC ?SUN-SET)'), task_start(T, S), task_end(T, E), owl_individual_of(ACTION, knowrob:'Action'), add_pointer(...TODO...).",
+	    	"text": "Where do many persons go after the sunset?"
+	    },
+	    {
+		"q": "owl_individual_of(Res, knowrob:'Restaurant'), highlight_object_mesh(Res).",
+	    	"text": "Show all the several restaurant on this map!"
+	    },
+	    {
+		"q": "owl_parse('package://knowrob_cognitive_map/owl/landmark01.owl'), owl_individual_of(L, knowrob:'Landmark01'), add_object(A).",
+	    	"text": "Show all hazardous areas on this map!"
+	    },
+	    {
+		"q": "owl_parse('package://knowrob_cognitive_map/owl/landmark02.owl'), owl_individual_of(L, knowrob:'Landmark02'), add_object(A).",
+	    	"text": "Show all hazardous areas on this map after the avalanche!"
+	    },
+	    {
+		"q": "owl_individual_of(A, knowrob:'Avalanche'), owl_individual_of(B, knowrob:'Building'), display_intersection(A, B).",
+	    	"text": "Show all the buildings which are affected by the avalanche!"
+	    },
+	    {
+		"q": "owl_individual_of(A, knowrob:'Avalanche'), owl_individual_of(P, knowrob:'Pathway'), display_intersection(A, P).",
+	    	"text": "Show all the passable pathways!"
+	    }
+  ]
+}    

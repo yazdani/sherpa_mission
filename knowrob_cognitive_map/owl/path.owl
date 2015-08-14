@@ -170,7 +170,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/path/path.dae</owl:hasValue>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/path/path01.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description> 
@@ -207,9 +207,9 @@
       <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
       <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
       <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
-      <knowrob:m03 rdf:datatype="&xsd;double">-17</knowrob:m03>
-      <knowrob:m13 rdf:datatype="&xsd;double">-48</knowrob:m13>
-      <knowrob:m23 rdf:datatype="&xsd;double">6</knowrob:m23>
+      <knowrob:m03 rdf:datatype="&xsd;double">0.0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0.0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">0.0</knowrob:m23>
     </owl:NamedIndividual>
 <!-- END RESTAURANT-->
 

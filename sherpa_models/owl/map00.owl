@@ -392,7 +392,7 @@
 
    <!-- Definition of some classes in the range of Soil (realmSoil)-->
    
-   <owl:Class rdf:about="#GroundBase">
+   <owl:Class rdf:about="&knowrob;GroundBase">
      <rdfs:subClassOf rdf:resource="#Ground"/>
    </owl:Class>
 
@@ -455,35 +455,14 @@
 
    <!-- Integration of the .dae files to the corresponding classes -->
   
- <rdf:Description rdf:about="&all;#GroundBase">
+ <rdf:Description rdf:about="&knowrob;GroundBase">
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/ground/ground.dae</owl:hasValue>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/path/path.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description> 
-
-<!-- <rdf:Description rdf:about="&all;#Hotel">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/avalanche/lawine.dae</owl:hasValue>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </rdf:Description> 
-
-    <rdf:Description rdf:about="&all;#Avalanche">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/house/haus.dae</owl:hasValue>
-
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </rdf:Description> 
-
--->
 
    <!-- Position of the .dae files in the map -->
 
@@ -517,30 +496,11 @@
       <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
       <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
       <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
-      <knowrob:m03 rdf:datatype="&xsd;double">6</knowrob:m03>
-      <knowrob:m13 rdf:datatype="&xsd;double">1</knowrob:m13>
+      <knowrob:m03 rdf:datatype="&xsd;double">0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0</knowrob:m13>
       <knowrob:m23 rdf:datatype="&xsd;double">0</knowrob:m23>
     </owl:NamedIndividual>
 
-<!--
-    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/ias_semantic_map.owl#Hotel">
-        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Hotel"/>
-        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
-        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:widthOfObject>
-        <knowrob:depthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:depthOfObject>
-        <knowrob:describedInMap rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap20150115165916"/>
-    </owl:NamedIndividual>
-
-
-    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/ias_semantic_map.owl#Avalanche">
-        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Avalanche"/>
-        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
-        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:widthOfObject>
-        <knowrob:depthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:depthOfObject>
-        <knowrob:describedInMap rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap20150115165916"/>
-    </owl:NamedIndividual>
-
--->
 
 </rdf:RDF>
 

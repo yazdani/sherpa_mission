@@ -2,12 +2,17 @@
 
 <!DOCTYPE rdf:RDF [
   <!ENTITY all "http://sweet.jpl.nasa.gov/2.3/sweetAll.owl">
+  
   <!ENTITY owl "http://www.w3.org/2002/07/owl#">
   <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
   <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
   <!ENTITY knowrob "http://knowrob.org/kb/knowrob.owl#">
-  <!ENTITY obj "http://sweet.jpl.nasa.gov/2.3/reprSpaceGeometry.owl">
+  <!ENTITY obj "http://sweet.jpl.nasa.gov/2.3/reprSpaceGeometry.owl#">
+  <!ENTITY biome "http://sweet.jpl.nasa.gov/2.3/realmBiolBiome.owl#">
+  <!ENTITY soil "http://sweet.jpl.nasa.gov/2.3/realmSoil.owl#">
+
+ 
 ]>
 
 <rdf:RDF xml:base="&all;"
@@ -18,6 +23,10 @@
 	 xmlns:xsd = "&xsd;"
 	 xmlns:knowrob="&knowrob;"
 	 xmlns:obj="&obj;"
+         xmlns:biome="&biome;"
+	 xmlns:soil="&soil;"
+
+
 >
 
 <!-- Import Ontologies -->
@@ -376,53 +385,21 @@
     <!-- &knowrob;Vector -->
     <owl:Class rdf:about="&knowrob;Vector"/>
 
-   <!-- Definition of some classes in the range of Facility (matrFacility)-->
-
-   <owl:Class rdf:about="&knowrob;AccomodationFacility">
-     <rdfs:subClassOf rdf:resource="#Facility"/>
-   </owl:Class>
-
-   <owl:Class rdf:about="&knowrob;Hotel">
-     <rdfs:subClassOf rdf:resource="&knowrob;AccomodationFacility"/>
-   </owl:Class>
-
-   <owl:Class rdf:about="&knowrob;CateringFacility">
-     <rdfs:subClassOf rdf:resource="#Facility"/>
-   </owl:Class>
-
-   <owl:Class rdf:about="&knowrob;Restaurant">
-     <rdfs:subClassOf rdf:resource="&knowrob;CateringFacility"/>
-     <owl:equivalentClass rdf:resource="&knowrob;AccomodationFacility"/>
-   </owl:Class>
-   
-   <!-- Definition of some classes in the range of Water (matrWater)-->
-  
-   <owl:Class rdf:about="&knowrob;SnowMass">
-     <rdfs:subClassOf rdf:resource="#Snow"/>
-   </owl:Class>
-
-   <owl:Class rdf:about="&knowrob;Avalanche">
-     <rdfs:subClassOf rdf:resource="&knowrob;SnowMass"/>
-   </owl:Class>
-
    <!-- Definition of some classes in the range of Soil (realmSoil)-->
    
    <owl:Class rdf:about="&knowrob;GroundBase">
-     <rdfs:subClassOf rdf:resource="#Ground"/>
+     <rdfs:subClassOf rdf:resource="&soil;Ground"/>
    </owl:Class>
 
  
-   <owl:Class rdf:about="&knowrob;Jura">
-     <rdfs:subClassOf rdf:resource="#Ground"/>
-   </owl:Class>
-
+  
   <!-- Definition of some classes in the range of Woodland (realmBiolBiome)-->
    <owl:Class rdf:about="&knowrob;Woodland00">
-     <rdfs:subClassOf rdf:resource="#Woodland"/>
+     <rdfs:subClassOf rdf:resource="&biome;Woodland"/>
    </owl:Class>
 
    <owl:Class rdf:about="&knowrob;Woodland01">
-     <rdfs:subClassOf rdf:resource="#Woodland"/>
+     <rdfs:subClassOf rdf:resource="&biome;Woodland"/>
 
    </owl:Class>
 
@@ -489,35 +466,16 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/ground/ground_centered2.dae</owl:hasValue>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/ground/ground.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description> 
-<!--
-<rdf:Description rdf:about="&knowrob;Restaurant">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/house/house_centered2.dae</owl:hasValue>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </rdf:Description> -->
-<!--
-    <rdf:Description rdf:about="&knowrob;Avalanche">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/avalanche/avalanche_centered2.dae</owl:hasValue>
 
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </rdf:Description> 
--->
 <rdf:Description rdf:about="&knowrob;Woodland00">
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/wood/wood01.dae</owl:hasValue>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/wood/tree3_richtig.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description> 
@@ -526,19 +484,12 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/wood/wood02.dae</owl:hasValue>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/wood/Scrubs_richtig.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description> 
 
-<rdf:Description rdf:about="&knowrob;Jura">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
-		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/layer/jura.dae</owl:hasValue>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </rdf:Description> 
+
 
    <!-- Position of the .dae files in the map -->
 <!-- GROUND -->
@@ -578,120 +529,8 @@
     </owl:NamedIndividual>
 <!-- END GROUND-->
 
-<!-- JURA -->
-  <owl:NamedIndividual rdf:about="&knowrob;Jura">
-        <rdf:type rdf:resource="&knowrob;Jura"/>
-        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
-        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:widthOfObject>
-        <knowrob:depthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:depthOfObject>
-        <knowrob:describedInMap rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap_PM582j"/>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="&knowrob;SemanticMapPerception_6">
-      <rdf:type rdf:resource="&knowrob;SemanticMapPerception"/>
-      <knowrob:startTime rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#timepoint_1399894481"/>
-      <knowrob:eventOccursAt rdf:resource="&knowrob;RotationMatrix3D_6"/>
-      <knowrob:objectActedOn rdf:resource="&knowrob;Jura"/>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="&knowrob;RotationMatrix3D_6">
-      <rdf:type rdf:resource="&knowrob;RotationMatrix3D"/>
-      <knowrob:m00 rdf:datatype="&xsd;double">1.0</knowrob:m00>
-      <knowrob:m11 rdf:datatype="&xsd;double">1.0</knowrob:m11>
-      <knowrob:m22 rdf:datatype="&xsd;double">1.0</knowrob:m22>
-      <knowrob:m33 rdf:datatype="&xsd;double">1.0</knowrob:m33>
-      <knowrob:m01 rdf:datatype="&xsd;double">0.0</knowrob:m01>
-      <knowrob:m02 rdf:datatype="&xsd;double">0.0</knowrob:m02>
-      <knowrob:m20 rdf:datatype="&xsd;double">0.0</knowrob:m20>
-      <knowrob:m10 rdf:datatype="&xsd;double">0.0</knowrob:m10>
-      <knowrob:m12 rdf:datatype="&xsd;double">0.0</knowrob:m12>
-      <knowrob:m21 rdf:datatype="&xsd;double">0.0</knowrob:m21>
-      <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
-      <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
-      <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
-      <knowrob:m03 rdf:datatype="&xsd;double">0</knowrob:m03>
-      <knowrob:m13 rdf:datatype="&xsd;double">0</knowrob:m13>
-      <knowrob:m23 rdf:datatype="&xsd;double">-50</knowrob:m23>
-    </owl:NamedIndividual>
-<!-- END JURA-->
-
-<!-- RESTAURANT -->
- <!-- <owl:NamedIndividual rdf:about="&knowrob;Restaurant">
-        <rdf:type rdf:resource="&knowrob;Restaurant"/>
-        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
-        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:widthOfObject>
-        <knowrob:depthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:depthOfObject>
-        <knowrob:describedInMap rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap_PM582j"/>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="&knowrob;SemanticMapPerception_2">
-      <rdf:type rdf:resource="&knowrob;SemanticMapPerception"/>
-      <knowrob:startTime rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#timepoint_1399894481"/>
-      <knowrob:eventOccursAt rdf:resource="&knowrob;RotationMatrix3D_2"/>
-      <knowrob:objectActedOn rdf:resource="&knowrob;Restaurant"/>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="&knowrob;RotationMatrix3D_2">
-      <rdf:type rdf:resource="&knowrob;RotationMatrix3D"/>
-      <knowrob:m00 rdf:datatype="&xsd;double">1.0</knowrob:m00>
-      <knowrob:m11 rdf:datatype="&xsd;double">1.0</knowrob:m11>
-      <knowrob:m22 rdf:datatype="&xsd;double">1.0</knowrob:m22>
-      <knowrob:m33 rdf:datatype="&xsd;double">1.0</knowrob:m33>
-      <knowrob:m01 rdf:datatype="&xsd;double">0.0</knowrob:m01>
-      <knowrob:m02 rdf:datatype="&xsd;double">0.0</knowrob:m02>
-      <knowrob:m20 rdf:datatype="&xsd;double">0.0</knowrob:m20>
-      <knowrob:m10 rdf:datatype="&xsd;double">0.0</knowrob:m10>
-      <knowrob:m12 rdf:datatype="&xsd;double">0.0</knowrob:m12>
-      <knowrob:m21 rdf:datatype="&xsd;double">0.0</knowrob:m21>
-      <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
-      <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
-      <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
-      <knowrob:m03 rdf:datatype="&xsd;double">20</knowrob:m03>
-      <knowrob:m13 rdf:datatype="&xsd;double">0</knowrob:m13>
-      <knowrob:m23 rdf:datatype="&xsd;double">26</knowrob:m23>
-    </owl:NamedIndividual>-->
-<!-- END RESTAURANT-->
-
-<!-- AVALANCHE -->
-<!--
-  <owl:NamedIndividual rdf:about="&knowrob;Avalanche">
-        <rdf:type rdf:resource="&knowrob;Avalanche"/>
-        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
-        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:widthOfObject>
-        <knowrob:depthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:depthOfObject>
-        <knowrob:describedInMap rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap_PM582j"/>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="&knowrob;SemanticMapPerception_1">
-      <rdf:type rdf:resource="&knowrob;SemanticMapPerception"/>
-      <knowrob:startTime rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#timepoint_1399894481"/>
-      <knowrob:eventOccursAt rdf:resource="&knowrob;RotationMatrix3D_1"/>
-      <knowrob:objectActedOn rdf:resource="&knowrob;Avalanche"/>
-    </owl:NamedIndividual>
-
-    <owl:NamedIndividual rdf:about="&knowrob;RotationMatrix3D_1">
-      <rdf:type rdf:resource="&knowrob;RotationMatrix3D"/>
-      <knowrob:m00 rdf:datatype="&xsd;double">1.0</knowrob:m00>
-      <knowrob:m11 rdf:datatype="&xsd;double">1.0</knowrob:m11>
-      <knowrob:m22 rdf:datatype="&xsd;double">1.0</knowrob:m22>
-      <knowrob:m33 rdf:datatype="&xsd;double">1.0</knowrob:m33>
-      <knowrob:m01 rdf:datatype="&xsd;double">0.0</knowrob:m01>
-      <knowrob:m02 rdf:datatype="&xsd;double">0.0</knowrob:m02>
-      <knowrob:m20 rdf:datatype="&xsd;double">0.0</knowrob:m20>
-      <knowrob:m10 rdf:datatype="&xsd;double">0.0</knowrob:m10>
-      <knowrob:m12 rdf:datatype="&xsd;double">0.0</knowrob:m12>
-      <knowrob:m21 rdf:datatype="&xsd;double">0.0</knowrob:m21>
-      <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
-      <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
-      <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
-      <knowrob:m03 rdf:datatype="&xsd;double">25</knowrob:m03>
-      <knowrob:m13 rdf:datatype="&xsd;double">26</knowrob:m13>
-      <knowrob:m23 rdf:datatype="&xsd;double">-10</knowrob:m23>
-    </owl:NamedIndividual>
--->
-<!-- END AVALANCHE-->
-
 <!-- WOOD1 -->
+
   <owl:NamedIndividual rdf:about="&knowrob;Woodland00">
         <rdf:type rdf:resource="&knowrob;Woodland00"/>
         <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
@@ -723,9 +562,9 @@
       <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
       <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
       <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
-      <knowrob:m03 rdf:datatype="&xsd;double">21</knowrob:m03>
-      <knowrob:m13 rdf:datatype="&xsd;double">23</knowrob:m13>
-      <knowrob:m23 rdf:datatype="&xsd;double">-18</knowrob:m23>
+      <knowrob:m03 rdf:datatype="&xsd;double">0.0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0.0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">0.0</knowrob:m23>
     </owl:NamedIndividual>
 <!-- END WOOD1-->
 
@@ -762,9 +601,9 @@
       <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
       <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
       <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
-      <knowrob:m03 rdf:datatype="&xsd;double">18.0</knowrob:m03>
-      <knowrob:m13 rdf:datatype="&xsd;double">28.0</knowrob:m13>
-      <knowrob:m23 rdf:datatype="&xsd;double">-18.0</knowrob:m23>
+      <knowrob:m03 rdf:datatype="&xsd;double">0.0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0.0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">0.0</knowrob:m23>
     </owl:NamedIndividual>
 <!-- END WOOD2-->
 
