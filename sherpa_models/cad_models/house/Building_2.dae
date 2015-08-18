@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.75.0 commit date:2015-07-07, commit time:14:56, hash:c27589e</authoring_tool>
+    </contributor>
+    <created>2015-08-14T13:16:54</created>
+    <modified>2015-08-14T13:16:54</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images/>
+  <library_effects>
+    <effect id="material_d77b57-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">1 0.5720931 0.4046512 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="material_d77b57-material" name="material_d77b57">
+      <instance_effect url="#material_d77b57-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="object_539-mesh" name="object.539">
+      <mesh>
+        <source id="object_539-mesh-positions">
+          <float_array id="object_539-mesh-positions-array" count="24">-15.23601 39.41306 -4.510298 -23.28471 39.41306 -7.16048 -24.74914 39.41306 -2.681227 -16.51691 39.41306 -0.5768125 -15.23601 41.0953 -4.510298 -23.28471 41.0953 -7.16048 -24.74914 41.0953 -2.681227 -16.51691 41.0953 -0.5768125</float_array>
+          <technique_common>
+            <accessor source="#object_539-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="object_539-mesh-normals">
+          <float_array id="object_539-mesh-normals-array" count="36">0 -1 1.74004e-6 0 -1 0 0 1 -6.52514e-7 0 1 0 -0.2476672 0 0.9688453 -0.2476672 0 0.9688453 -0.9504914 0 -0.3107513 -0.9504919 0 -0.3107494 0.3127503 0 -0.9498354 0.3127517 0 -0.9498349 0.9508548 0 0.309637 0.9508556 0 0.309635</float_array>
+          <technique_common>
+            <accessor source="#object_539-mesh-normals-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="object_539-mesh-vertices">
+          <input semantic="POSITION" source="#object_539-mesh-positions"/>
+        </vertices>
+        <polylist material="material_d77b57-material" count="12">
+          <input semantic="VERTEX" source="#object_539-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#object_539-mesh-normals" offset="1"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>0 0 3 0 2 0 2 1 1 1 0 1 6 2 7 2 4 2 4 3 5 3 6 3 7 4 2 4 3 4 7 5 6 5 2 5 6 6 1 6 2 6 6 7 5 7 1 7 5 8 0 8 1 8 5 9 4 9 0 9 4 10 3 10 0 10 4 11 7 11 3 11</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Building_001" name="Building_001" type="NODE">
+        <matrix sid="transform">0.5418267 0 0 34.02708 0 -2.31721e-7 -0.5895939 -20.31902 0 1.422295 -9.60571e-8 -27.13747 0 0 0 1</matrix>
+        <instance_geometry url="#object_539-mesh" name="Building_001">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="material_d77b57-material" target="#material_d77b57-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE rdf:RDF [
+  <!ENTITY all "http://sweet.jpl.nasa.gov/2.3/sweetAll.owl">
+   <!ENTITY struc "http://sweet.jpl.nasa.gov/2.3/matrFacility.owl#">
+ <!ENTITY graph "http://sweet.jpl.nasa.gov/2.3/reprMathGraph.owl">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY knowrob "http://knowrob.org/kb/knowrob.owl#">
+  <!ENTITY obj "http://sweet.jpl.nasa.gov/2.3/reprSpaceGeometry.owl#">
+  <!ENTITY biome "http://sweet.jpl.nasa.gov/2.3/realmBiolBiome.owl#">
+  <!ENTITY soil "http://sweet.jpl.nasa.gov/2.3/realmSoil.owl#">
+ <!ENTITY land "http://sweet.jpl.nasa.gov/2.3/realmLandform.owl">
+ 
+]>
+
+<rdf:RDF xml:base="&all;"
+         xmlns:all="&all;"
+         xmlns:owl="&owl;"
+         xmlns:rdf="&rdf;"
+         xmlns:rdfs="&rdfs;"
+	 xmlns:xsd = "&xsd;"
+	 xmlns:knowrob="&knowrob;"
+	 xmlns:obj="&obj;"
+         xmlns:biome="&biome;"
+	 xmlns:soil="&soil;"
+	 xmlns:struc="&struc;"
+	 xmlns:graph = "&graph;"
+	 xmlns:land="&land;"
+
+>
+
+<!-- Import Ontologies -->
+  <owl:Ontology rdf:about="" owl:versionInfo="2.3">
+    <rdfs:label>SWEET Ontology</rdfs:label>
+   	 <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrFacility.owl"/>
+	 <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrWater.owl"/>
+    	 <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmSoil.owl"/>
+ 	 <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSpace.owl"/>
+  	 <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSpaceCoordinate.owl"/>
+    	 <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSpaceGeometry.owl"/>
+   <!-- <owl:imports rdf:resource="package://knowrob_common/owl/knowrob.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/human.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/humanAgriculture.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/humanCommerce.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/humanDecision.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/humanEnvirControl.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/humanEnvirConservation.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/humanEnvirStandards.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/humanEnvirAssessment.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/humanJurisdiction.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/humanKnowledgeDomain.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/humanResearch.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/humanTechReadiness.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/humanTransportation.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matr.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrAerosol.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrAnimal.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrBiomass.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrOrganicCompound.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrEnergy.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrEquipment.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrFacility.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrElement.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrElementalMolecule.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrIndustrial.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrInstrument.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrIon.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrIsotope.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrMicrobiota.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrMineral.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrNaturalResource.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrParticle.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrPlant.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrRock.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrRockIgneous.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrSediment.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/matrWater.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phen.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenAtmo.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenAtmoCloud.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenAtmoFog.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenAtmoFront.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenAtmoLightning.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenAtmoPrecipitation.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenAtmoPressure.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenAtmoTransport.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenAtmoWind.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenAtmoWindMesoscale.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenBiol.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenEcology.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenEnvirImpact.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenEnergy.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenCryo.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenCycle.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenCycleMaterial.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenElecMag.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenFluidDynamics.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenFluidInstability.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenFluidTransport.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenGeol.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenGeolFault.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenGeolGeomorphology.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenGeolSeismicity.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenGeolTectonic.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenGeolVolcano.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenHelio.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenHydro.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenMixing.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenOcean.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenOceanDynamics.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenOceanCoastal.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenPlanetClimate.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenReaction.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenSolid.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenStar.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenSystem.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenSystemComplexity.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenWave.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/phenWaveNoise.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/proc.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/procChemical.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/procPhysical.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/procStateChange.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/procWave.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/prop.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propBinary.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propCapacity.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propCategorical.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propCharge.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propChemical.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propConductivity.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propCount.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propDifference.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propDiffusivity.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propDimensionlessRatio.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propEnergy.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propEnergyFlux.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propFraction.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propIndex.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propMass.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propMassFlux.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propOrdinal.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propPressure.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propQuantity.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propSpace.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propSpaceDirection.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propSpaceDistance.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propSpaceHeight.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propSpaceLocation.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propSpaceMultidimensional.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propSpaceThickness.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propFunction.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propTemperature.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propTemperatureGradient.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propTime.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propTimeFrequency.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propSpeed.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/propRotation.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realm.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmAstroBody.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmAstroHelio.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmAstroStar.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmAtmo.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmAtmoWeather.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmAtmoBoundaryLayer.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmBiolBiome.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmClimateZone.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmCryo.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmEarthReference.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmGeol.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmGeolBasin.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmGeolConstituent.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmGeolContinental.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmGeolOrogen.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmHydro.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmHydroBody.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmLandAeolian.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmLandCoastal.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmLandFluvial.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmLandGlacial.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmLandform.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmLandOrographic.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmLandProtected.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmLandTectonic.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmLandVolcanic.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmOcean.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmOceanFeature.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmOceanFloor.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmRegion.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/realmSoil.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/rela.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/relaChemical.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/relaClimate.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/relaHuman.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/relaMath.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/relaPhysical.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/relaProvenance.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/relaSci.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/relaSpace.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/relaTime.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/repr.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprDataFormat.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprDataModel.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprDataProduct.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprDataService.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprDataServiceAnalysis.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprDataServiceReduction.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprDataServiceGeospatial.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprDataServiceValidation.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprMath.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprMathFunction.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprMathFunctionOrthogonal.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprMathGraph.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprMathOperation.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprMathSolution.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprMathStatistics.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSciComponent.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSciFunction.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSciLaw.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSciMethodology.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSciModel.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSciProvenance.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSciUnits.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSpace.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSpaceCoordinate.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSpaceDirection.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSpaceGeometry.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSpaceGeometry3D.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSpaceReferenceSystem.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprTime.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprTimeDay.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprTimeSeason.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/state.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateBiological.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateChemical.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateDataProcessing.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateEnergyFlux.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateFluid.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateOrdinal.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/statePhysical.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateRealm.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateRole.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateRoleImpact.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateRoleBiological.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateRoleChemical.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateRoleGeographic.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateRoleRepresentative.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateRoleTrust.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateSolid.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateSpace.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateSpaceScale.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateSpaceConfiguration.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateSpectralBand.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateSpectralLine.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateStorm.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateSystem.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateThermodynamic.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateTime.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateTimeCycle.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateTimeFrequency.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateTimeGeologic.owl"/>
+    <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/2.3/stateVisibility.owl"/> -->
+  </owl:Ontology>
+
+  <!--
+///////////////////////////////////////////////////////////////////////////////////////
+//
+// Object Properties
+//
+///////////////////////////////////////////////////////////////////////////////////////
+-->
+ <!-- &knowrob;describedInMap -->
+<owl:ObjectProperty rdf:about="&knowrob;describedInMap"/>
+
+ <!-- http://knowrob.org/kb/knowrob.owl#eventOccursAt -->
+
+    <owl:ObjectProperty rdf:about="&knowrob;eventOccursAt"/>
+    
+
+ <!-- http://knowrob.org/kb/knowrob.owl#objectActedOn -->
+
+    <owl:ObjectProperty rdf:about="&knowrob;objectActedOn"/>
+    
+
+ <!-- http://knowrob.org/kb/knowrob.owl#startTime -->
+
+    <owl:ObjectProperty rdf:about="&knowrob;startTime"/>
+
+ <!-- http://knowrob.org/kb/knowrob.owl#endTime -->
+
+    <owl:ObjectProperty rdf:about="&knowrob;endTime"/>
+
+ <!-- http://knowrob.org/kb/knowrob.owl#hasGeometricalShape -->
+
+    <owl:ObjectProperty rdf:about="&knowrob;hasGeometricalShape">
+      <rdfs:domain rdf:resource="&obj;#Polygon"/>
+    </owl:ObjectProperty>
+
+<!--
+///////////////////////////////////////////////////////////////////////////////////////
+//
+// Data properties
+//
+///////////////////////////////////////////////////////////////////////////////////////
+-->
+
+<!-- &knowrob;depthOfObject -->
+<owl:DatatypeProperty rdf:about="&knowrob;depthOfObject"/>
+<!-- &knowrob;heightOfObject -->
+<owl:DatatypeProperty rdf:about="&knowrob;heightOfObject"/>
+<!-- &knowrob;m00 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m00"/>
+<!-- &knowrob;m01 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m01"/>
+<!-- &knowrob;m02 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m02"/>
+<!-- &knowrob;m03 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m03"/>
+<!-- &knowrob;m10 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m10"/>
+<!-- &knowrob;m11 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m11"/>
+<!-- &knowrob;m12 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m12"/>
+<!-- &knowrob;m13 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m13"/>
+<!-- &knowrob;m20 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m20"/>
+<!-- &knowrob;m21 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m21"/>
+<!-- &knowrob;m22 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m22"/>
+<!-- &knowrob;m23 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m23"/>
+<!-- &knowrob;m30 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m30"/>
+<!-- &knowrob;m31 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m31"/>
+<!-- &knowrob;m32 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m32"/>
+<!-- &knowrob;m33 -->
+<owl:DatatypeProperty rdf:about="&knowrob;m33"/>
+<!-- &knowrob;widthOfObject -->
+<owl:DatatypeProperty rdf:about="&knowrob;widthOfObject"/>
+<!-- &knowrob;maxJointValue -->
+<owl:DatatypeProperty rdf:about="&knowrob;maxJointValue"/>
+<!-- &knowrob;minJointValue -->
+<owl:DatatypeProperty rdf:about="&knowrob;minJointValue"/>
+<!-- &knowrob;turnRadius -->
+<owl:DatatypeProperty rdf:about="&knowrob;turnRadius"/>
+<!-- &knowrob;vectorX -->
+<owl:DatatypeProperty rdf:about="&knowrob;vectorX"/>
+<!-- &knowrob;vectorY -->
+<owl:DatatypeProperty rdf:about="&knowrob;vectorY"/>
+<!-- &knowrob;vectorZ -->
+<owl:DatatypeProperty rdf:about="&knowrob;vectorZ"/>
+
+
+ <!--
+///////////////////////////////////////////////////////////////////////////////////////
+//
+// Classes
+//
+///////////////////////////////////////////////////////////////////////////////////////
+-->
+
+    <!-- &knowrob;RotationMatrix3D -->
+     <owl:Class rdf:about="&knowrob;RotationMatrix3D"/>
+
+    <!-- &knowrob;SemanticEnvironmentMap -->
+    <owl:Class rdf:about="&knowrob;SemanticEnvironmentMap"/>
+
+    <!-- &knowrob;SemanticMapPerception -->
+    <owl:Class rdf:about="&knowrob;SemanticMapPerception"/>
+
+    <!-- &knowrob;TimePoint -->
+    <owl:Class rdf:about="&knowrob;TimePoint"/>
+
+    <!-- &knowrob;PrismaticJoint -->
+    <owl:Class rdf:about="&knowrob;PrismaticJoint"/>
+
+    <!-- &knowrob;HingedJoint -->
+    <owl:Class rdf:about="&knowrob;HingedJoint"/>
+
+    <!-- &knowrob;Vector -->
+    <owl:Class rdf:about="&knowrob;Vector"/>
+
+   <!-- Definition of some classes in the range of Soil (realmSoil)-->
+   
+   <owl:Class rdf:about="&knowrob;GroundBase">
+     <rdfs:subClassOf rdf:resource="&soil;Ground"/>
+   </owl:Class>
+
+ 
+  
+  <!-- Definition of some classes in the range of Woodland (realmBiolBiome)-->
+   <owl:Class rdf:about="&knowrob;Woodland00">
+     <rdfs:subClassOf rdf:resource="&biome;Woodland"/>
+   </owl:Class>
+
+   <owl:Class rdf:about="&knowrob;Woodland01">
+     <rdfs:subClassOf rdf:resource="&biome;Woodland"/>
+
+   </owl:Class>
+
+  <!-- Definition of some classes in the range of Geometry (reprSpaceGeometry)-->
+<owl:Class rdf:about="&knowrob;Path01">
+     <rdfs:subClassOf rdf:resource="&graph;Path"/>
+   </owl:Class>
+
+<!--
+ <owl:Class rdf:about="#Trajectory">
+    <rdfs:subClassOf rdf:resource="#Curve"/>
+    <owl:equivalentClass rdf:resource="#Path"/>
+    <rdfs:comment xml:lang="en">Curve in space tracing the points successivley occupied by a particle in motion</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Path"/>
+
+  <owl:Class rdf:about="#Route">
+    <rdfs:subClassOf rdf:resource="#Path"/>
+  </owl:Class>-->
+    <!-- Definition of some classes in the range of Facility (matrFacility)-->
+
+   <owl:Class rdf:about="&knowrob;AccomodationFacility">
+     <rdfs:subClassOf rdf:resource="&struc;Facility"/>
+   </owl:Class>
+
+   <owl:Class rdf:about="&knowrob;Hotel">
+     <rdfs:subClassOf rdf:resource="&knowrob;AccomodationFacility"/>
+   </owl:Class>
+
+   <owl:Class rdf:about="&knowrob;CateringFacility">
+     <rdfs:subClassOf rdf:resource="&struc;Facility"/>
+   </owl:Class>
+
+   <owl:Class rdf:about="&knowrob;Restaurant">
+     <rdfs:subClassOf rdf:resource="&knowrob;CateringFacility"/>
+   </owl:Class>
+
+   <owl:Class rdf:about="&knowrob;Restaurant">
+     <rdfs:subClassOf rdf:resource="&knowrob;AccomodationFacility"/>
+   </owl:Class>
+
+  <owl:Class rdf:about="&knowrob;Sealing">
+     <rdfs:subClassOf rdf:resource="&land;LandCover"/>
+   </owl:Class>
+
+ <!--
+///////////////////////////////////////////////////////////////////////////////////////
+//
+// Individuals
+//
+///////////////////////////////////////////////////////////////////////////////////////
+-->
+
+
+ <!-- http://knowrob/kb/ias_semantic_map.owl#SemanticEnvironmentMap_PM582j -->
+ <owl:NamedIndividual rdf:about="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap_PM582j">
+   <rdf:type rdf:resource="&knowrob;SemanticEnvironmentMap"/>
+ </owl:NamedIndividual>
+
+ <!-- http://knowrob/kb/ias_semantic_map.owl#timepoint_1399894481 -->
+ <owl:NamedIndividual rdf:about="http://knowrob.org/kb/ias_semantic_map.owl#timepoint_1399894481">
+   <rdf:type rdf:resource="&knowrob;TimePoint"/>
+ </owl:NamedIndividual>
+
+ <owl:NamedIndividual rdf:about="&knowrob;VectorX">
+   <rdf:type rdf:resource="&knowrob;Vector"/>
+   <knowrob:vectorX rdf:datatype="&xsd;double">1.0</knowrob:vectorX>
+   <knowrob:vectorY rdf:datatype="&xsd;double">0.0</knowrob:vectorY>
+   <knowrob:vectorZ rdf:datatype="&xsd;double">0.0</knowrob:vectorZ>
+ </owl:NamedIndividual>
+
+ <owl:NamedIndividual rdf:about="&knowrob;VectorXneg">
+   <rdf:type rdf:resource="&knowrob;Vector"/>
+   <knowrob:vectorX rdf:datatype="&xsd;double">-1.0</knowrob:vectorX>
+   <knowrob:vectorY rdf:datatype="&xsd;double">0.0</knowrob:vectorY>
+   <knowrob:vectorZ rdf:datatype="&xsd;double">0.0</knowrob:vectorZ>
+ </owl:NamedIndividual>
+
+ <owl:NamedIndividual rdf:about="&knowrob;VectorTable"> <!-- -61.11 Deg-->
+   <rdf:type rdf:resource="&knowrob;Vector"/>
+   <knowrob:vectorX rdf:datatype="&xsd;double">0.48313</knowrob:vectorX>
+   <knowrob:vectorY rdf:datatype="&xsd;double">-0.875549</knowrob:vectorY>
+   <knowrob:vectorZ rdf:datatype="&xsd;double">0.0</knowrob:vectorZ>
+ </owl:NamedIndividual>
+
+
+<rdf:Description rdf:about="&knowrob;Path01">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/path/path01.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description> 
+
+<rdf:Description rdf:about="&knowrob;Restaurant">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/house/Building.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description> 
+
+<rdf:Description rdf:about="&knowrob;Hotel">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/house/Building_2.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description> 
+
+<rdf:Description rdf:about="&knowrob;Sealing">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/house/Sealing.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description> 
+
+   <!-- Integration of the .dae files to the corresponding classes -->
+ 
+ <rdf:Description rdf:about="&knowrob;GroundBase">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/ground/ground1.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description> 
+
+<rdf:Description rdf:about="&knowrob;Woodland00">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/wood/tree3_richtig.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description> 
+
+<rdf:Description rdf:about="&knowrob;Woodland01">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
+		<owl:hasValue rdf:datatype="&xsd;string">package://sherpa_models/cad_models/wood/Scrubs_richtig.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description> 
+
+
+
+   <!-- Position of the .dae files in the map -->
+<!-- GROUND -->
+  <owl:NamedIndividual rdf:about="&knowrob;GroundBase">
+        <rdf:type rdf:resource="&knowrob;GroundBase"/>
+        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
+        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:widthOfObject>
+        <knowrob:depthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:depthOfObject>
+        <knowrob:describedInMap rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap_PM582j"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;SemanticMapPerception_0">
+      <rdf:type rdf:resource="&knowrob;SemanticMapPerception"/>
+      <knowrob:startTime rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#timepoint_1399894481"/>
+      <knowrob:eventOccursAt rdf:resource="&knowrob;RotationMatrix3D_0"/>
+      <knowrob:objectActedOn rdf:resource="&knowrob;GroundBase"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;RotationMatrix3D_0">
+      <rdf:type rdf:resource="&knowrob;RotationMatrix3D"/>
+      <knowrob:m00 rdf:datatype="&xsd;double">1.0</knowrob:m00>
+      <knowrob:m11 rdf:datatype="&xsd;double">1.0</knowrob:m11>
+      <knowrob:m22 rdf:datatype="&xsd;double">1.0</knowrob:m22>
+      <knowrob:m33 rdf:datatype="&xsd;double">1.0</knowrob:m33>
+      <knowrob:m01 rdf:datatype="&xsd;double">0.0</knowrob:m01>
+      <knowrob:m02 rdf:datatype="&xsd;double">0.0</knowrob:m02>
+      <knowrob:m20 rdf:datatype="&xsd;double">0.0</knowrob:m20>
+      <knowrob:m10 rdf:datatype="&xsd;double">0.0</knowrob:m10>
+      <knowrob:m12 rdf:datatype="&xsd;double">0.0</knowrob:m12>
+      <knowrob:m21 rdf:datatype="&xsd;double">0.0</knowrob:m21>
+      <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
+      <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
+      <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
+      <knowrob:m03 rdf:datatype="&xsd;double">0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">0</knowrob:m23>
+    </owl:NamedIndividual>
+<!-- END GROUND-->
+
+<!-- WOOD1 -->
+
+  <owl:NamedIndividual rdf:about="&knowrob;Woodland00">
+        <rdf:type rdf:resource="&knowrob;Woodland00"/>
+        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
+        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:widthOfObject>
+        <knowrob:depthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:depthOfObject>
+        <knowrob:describedInMap rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap_PM582j"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;SemanticMapPerception_3">
+      <rdf:type rdf:resource="&knowrob;SemanticMapPerception"/>
+      <knowrob:startTime rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#timepoint_1399894481"/>
+      <knowrob:eventOccursAt rdf:resource="&knowrob;RotationMatrix3D_3"/>
+      <knowrob:hasGeometricalShape rdf:resource="&knowrob;Woodland00"/>
+      <knowrob:objectActedOn rdf:resource="&knowrob;Woodland00"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;RotationMatrix3D_3">
+      <rdf:type rdf:resource="&knowrob;RotationMatrix3D"/>
+      <knowrob:m00 rdf:datatype="&xsd;double">1.0</knowrob:m00>
+      <knowrob:m11 rdf:datatype="&xsd;double">1.0</knowrob:m11>
+      <knowrob:m22 rdf:datatype="&xsd;double">1.0</knowrob:m22>
+      <knowrob:m33 rdf:datatype="&xsd;double">1.0</knowrob:m33>
+      <knowrob:m01 rdf:datatype="&xsd;double">0.0</knowrob:m01>
+      <knowrob:m02 rdf:datatype="&xsd;double">0.0</knowrob:m02>
+      <knowrob:m20 rdf:datatype="&xsd;double">0.0</knowrob:m20>
+      <knowrob:m10 rdf:datatype="&xsd;double">0.0</knowrob:m10>
+      <knowrob:m12 rdf:datatype="&xsd;double">0.0</knowrob:m12>
+      <knowrob:m21 rdf:datatype="&xsd;double">0.0</knowrob:m21>
+      <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
+      <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
+      <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
+      <knowrob:m03 rdf:datatype="&xsd;double">0.0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0.0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">0.0</knowrob:m23>
+    </owl:NamedIndividual>
+<!-- END WOOD1-->
+
+
+<!-- WOOD2 -->
+  <owl:NamedIndividual rdf:about="&knowrob;Woodland01">
+        <rdf:type rdf:resource="&knowrob;Woodland01"/>
+        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
+        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:widthOfObject>
+        <knowrob:depthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:depthOfObject>
+        <knowrob:describedInMap rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap_PM582j"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;SemanticMapPerception_4">
+      <rdf:type rdf:resource="&knowrob;SemanticMapPerception"/>
+      <knowrob:startTime rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#timepoint_1399894481"/>
+      <knowrob:eventOccursAt rdf:resource="&knowrob;RotationMatrix3D_4"/>
+      <knowrob:hasGeometricalShape rdf:resource="&knowrob;Woodland01"/>
+      <knowrob:objectActedOn rdf:resource="&knowrob;Woodland01"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;RotationMatrix3D_4">
+      <rdf:type rdf:resource="&knowrob;RotationMatrix3D"/>
+      <knowrob:m00 rdf:datatype="&xsd;double">1.0</knowrob:m00>
+      <knowrob:m11 rdf:datatype="&xsd;double">1.0</knowrob:m11>
+      <knowrob:m22 rdf:datatype="&xsd;double">1.0</knowrob:m22>
+      <knowrob:m33 rdf:datatype="&xsd;double">1.0</knowrob:m33>
+      <knowrob:m01 rdf:datatype="&xsd;double">0.0</knowrob:m01>
+      <knowrob:m02 rdf:datatype="&xsd;double">0.0</knowrob:m02>
+      <knowrob:m20 rdf:datatype="&xsd;double">0.0</knowrob:m20>
+      <knowrob:m10 rdf:datatype="&xsd;double">0.0</knowrob:m10>
+      <knowrob:m12 rdf:datatype="&xsd;double">0.0</knowrob:m12>
+      <knowrob:m21 rdf:datatype="&xsd;double">0.0</knowrob:m21>
+      <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
+      <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
+      <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
+      <knowrob:m03 rdf:datatype="&xsd;double">0.0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0.0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">0.0</knowrob:m23>
+    </owl:NamedIndividual>
+<!-- END WOOD2-->
+
+<!-- PATH -->
+ <owl:NamedIndividual rdf:about="&knowrob;Path01">
+        <rdf:type rdf:resource="&knowrob;Path01"/>
+        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
+        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:widthOfObject>
+        <knowrob:depthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:depthOfObject>
+        <knowrob:describedInMap rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap_PM582j"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;SemanticMapPerception_010">
+      <rdf:type rdf:resource="&knowrob;SemanticMapPerception"/>
+      <knowrob:startTime rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#timepoint_1399894481"/>
+      <knowrob:eventOccursAt rdf:resource="&knowrob;RotationMatrix3D_010"/>
+      <knowrob:objectActedOn rdf:resource="&knowrob;Path01"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;RotationMatrix3D_010">
+      <rdf:type rdf:resource="&knowrob;RotationMatrix3D"/>
+      <knowrob:m00 rdf:datatype="&xsd;double">1.0</knowrob:m00>
+      <knowrob:m11 rdf:datatype="&xsd;double">1.0</knowrob:m11>
+      <knowrob:m22 rdf:datatype="&xsd;double">1.0</knowrob:m22>
+      <knowrob:m33 rdf:datatype="&xsd;double">1.0</knowrob:m33>
+      <knowrob:m01 rdf:datatype="&xsd;double">0.0</knowrob:m01>
+      <knowrob:m02 rdf:datatype="&xsd;double">0.0</knowrob:m02>
+      <knowrob:m20 rdf:datatype="&xsd;double">0.0</knowrob:m20>
+      <knowrob:m10 rdf:datatype="&xsd;double">0.0</knowrob:m10>
+      <knowrob:m12 rdf:datatype="&xsd;double">0.0</knowrob:m12>
+      <knowrob:m21 rdf:datatype="&xsd;double">0.0</knowrob:m21>
+      <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
+      <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
+      <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
+      <knowrob:m03 rdf:datatype="&xsd;double">0.0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0.0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">0.0</knowrob:m23>
+    </owl:NamedIndividual>
+<!-- PATH END -->
+
+<!-- RESTAURANT -->
+
+ <owl:NamedIndividual rdf:about="&knowrob;Restaurant">
+        <rdf:type rdf:resource="&knowrob;Restaurant"/>
+        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
+        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:widthOfObject>
+        <knowrob:depthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:depthOfObject>
+        <knowrob:describedInMap rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap_PM582j"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;SemanticMapPerception_2">
+      <rdf:type rdf:resource="&knowrob;SemanticMapPerception"/>
+      <knowrob:startTime rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#timepoint_1399894481"/>
+      <knowrob:eventOccursAt rdf:resource="&knowrob;RotationMatrix3D_2"/>
+      <knowrob:objectActedOn rdf:resource="&knowrob;Restaurant"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;RotationMatrix3D_2">
+      <rdf:type rdf:resource="&knowrob;RotationMatrix3D"/>
+      <knowrob:m00 rdf:datatype="&xsd;double">1.0</knowrob:m00>
+      <knowrob:m11 rdf:datatype="&xsd;double">1.0</knowrob:m11>
+      <knowrob:m22 rdf:datatype="&xsd;double">1.0</knowrob:m22>
+      <knowrob:m33 rdf:datatype="&xsd;double">1.0</knowrob:m33>
+      <knowrob:m01 rdf:datatype="&xsd;double">0.0</knowrob:m01>
+      <knowrob:m02 rdf:datatype="&xsd;double">0.0</knowrob:m02>
+      <knowrob:m20 rdf:datatype="&xsd;double">0.0</knowrob:m20>
+      <knowrob:m10 rdf:datatype="&xsd;double">0.0</knowrob:m10>
+      <knowrob:m12 rdf:datatype="&xsd;double">0.0</knowrob:m12>
+      <knowrob:m21 rdf:datatype="&xsd;double">0.0</knowrob:m21>
+      <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
+      <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
+      <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
+      <knowrob:m03 rdf:datatype="&xsd;double">0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">0</knowrob:m23>
+    </owl:NamedIndividual>
+
+<!-- END RESTAURANT-->
+<!-- Hotel -->
+
+ <owl:NamedIndividual rdf:about="&knowrob;Hotel">
+        <rdf:type rdf:resource="&knowrob;Hotel"/>
+        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
+        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:widthOfObject>
+        <knowrob:depthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:depthOfObject>
+        <knowrob:describedInMap rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap_PM582j"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;SemanticMapPerception_20">
+      <rdf:type rdf:resource="&knowrob;SemanticMapPerception"/>
+      <knowrob:startTime rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#timepoint_1399894481"/>
+      <knowrob:eventOccursAt rdf:resource="&knowrob;RotationMatrix3D_20"/>
+      <knowrob:objectActedOn rdf:resource="&knowrob;Hotel"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;RotationMatrix3D_20">
+      <rdf:type rdf:resource="&knowrob;RotationMatrix3D"/>
+      <knowrob:m00 rdf:datatype="&xsd;double">1.0</knowrob:m00>
+      <knowrob:m11 rdf:datatype="&xsd;double">1.0</knowrob:m11>
+      <knowrob:m22 rdf:datatype="&xsd;double">1.0</knowrob:m22>
+      <knowrob:m33 rdf:datatype="&xsd;double">1.0</knowrob:m33>
+      <knowrob:m01 rdf:datatype="&xsd;double">0.0</knowrob:m01>
+      <knowrob:m02 rdf:datatype="&xsd;double">0.0</knowrob:m02>
+      <knowrob:m20 rdf:datatype="&xsd;double">0.0</knowrob:m20>
+      <knowrob:m10 rdf:datatype="&xsd;double">0.0</knowrob:m10>
+      <knowrob:m12 rdf:datatype="&xsd;double">0.0</knowrob:m12>
+      <knowrob:m21 rdf:datatype="&xsd;double">0.0</knowrob:m21>
+      <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
+      <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
+      <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
+      <knowrob:m03 rdf:datatype="&xsd;double">0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">0</knowrob:m23>
+    </owl:NamedIndividual>
+
+<!-- END Hotel-->
+
+<!-- Sealing -->
+  <owl:NamedIndividual rdf:about="&knowrob;Sealing">
+        <rdf:type rdf:resource="&knowrob;Sealing"/>
+        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:heightOfObject>
+        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:widthOfObject>
+        <knowrob:depthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</knowrob:depthOfObject>
+        <knowrob:describedInMap rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#SemanticEnvironmentMap_PM582j"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;SemanticMapPerception_21">
+      <rdf:type rdf:resource="&knowrob;SemanticMapPerception"/>
+      <knowrob:startTime rdf:resource="http://knowrob.org/kb/ias_semantic_map.owl#timepoint_1399894481"/>
+      <knowrob:eventOccursAt rdf:resource="&knowrob;RotationMatrix3D_21"/>
+      <knowrob:objectActedOn rdf:resource="&knowrob;Sealing"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="&knowrob;RotationMatrix3D_21">
+      <rdf:type rdf:resource="&knowrob;RotationMatrix3D"/>
+      <knowrob:m00 rdf:datatype="&xsd;double">1.0</knowrob:m00>
+      <knowrob:m11 rdf:datatype="&xsd;double">1.0</knowrob:m11>
+      <knowrob:m22 rdf:datatype="&xsd;double">1.0</knowrob:m22>
+      <knowrob:m33 rdf:datatype="&xsd;double">1.0</knowrob:m33>
+      <knowrob:m01 rdf:datatype="&xsd;double">0.0</knowrob:m01>
+      <knowrob:m02 rdf:datatype="&xsd;double">0.0</knowrob:m02>
+      <knowrob:m20 rdf:datatype="&xsd;double">0.0</knowrob:m20>
+      <knowrob:m10 rdf:datatype="&xsd;double">0.0</knowrob:m10>
+      <knowrob:m12 rdf:datatype="&xsd;double">0.0</knowrob:m12>
+      <knowrob:m21 rdf:datatype="&xsd;double">0.0</knowrob:m21>
+      <knowrob:m30 rdf:datatype="&xsd;double">0.0</knowrob:m30>
+      <knowrob:m31 rdf:datatype="&xsd;double">0.0</knowrob:m31>
+      <knowrob:m32 rdf:datatype="&xsd;double">0.0</knowrob:m32>
+      <knowrob:m03 rdf:datatype="&xsd;double">0</knowrob:m03>
+      <knowrob:m13 rdf:datatype="&xsd;double">0</knowrob:m13>
+      <knowrob:m23 rdf:datatype="&xsd;double">0</knowrob:m23>
+    </owl:NamedIndividual>
+<!-- END Sealing-->
+
+</rdf:RDF>
+
