@@ -67,11 +67,18 @@ find_package(catkin REQUIRED COMPONENTS
 #   Action2.action
 # )
 
+add_message_files(
+   FILES
+ #  ros2Tldl.msg
+   multimodal_msgs.msg
+   response_msgs.msg
+ )
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   geometry_msgs#   std_msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  geometry_msgs  
+  std_msgs
+)
 
 ###################################
 ## catkin specific configuration ##
@@ -85,7 +92,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES multimodal_interpreter
-#  CATKIN_DEPENDS geometry_msgs message_generation message_runtime roscpp rospy std_msgs
+  CATKIN_DEPENDS geometry_msgs message_generation message_runtime roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
 
@@ -152,15 +159,7 @@ include_directories(
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 
-add_message_files(
-   FILES
- #  ros2Tldl.msg
-   multimodal_msgs.msg
-#   StringMultiArrays.msg
-#   StringMultiArray.msg
-#   testmsg.msg
-#   checkmsg.msg
- )
+
 #############
 ## Testing ##
 #############
