@@ -1,3 +1,0 @@
-string str
-geometry_msgs/Transform transform1
-geometry_msgs/Transform transform2
