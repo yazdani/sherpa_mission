@@ -89,6 +89,11 @@ generate_messages(
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
+
+add_executable(tester src/tester.cpp)
+target_link_libraries(tester ${catkin_LIBRARIES})
+add_dependencies(tester multimodal_interpreter_generate_messages_cpp)
+
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES multimodal_interpreter

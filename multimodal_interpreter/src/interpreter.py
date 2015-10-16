@@ -84,8 +84,9 @@ def sendSocket(date):
 def startSocket():
     global pub
     global c
+    pub = rospy.Publisher('multimodal_msgs', response_msgs , queue_size=10)
     rospy.init_node('tf_transforms2')
-    pub = rospy.Publisher('multimodal_interpreter', response_msgs , queue_size=10)
+    rate = rospy.Rate(10)
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(("yazdani", 1234))
     s.listen(1)

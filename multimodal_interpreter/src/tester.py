@@ -5,15 +5,19 @@ from multimodal_interpreter.msg import multimodal_msgs
 from std_msgs.msg import String
 from geometry_msgs.msg import Vector3
 from geometry_msgs.msg import Pose
+from std_msgs.msg import String
 
 
-if __name__ == '__main__':
-    pub = rospy.Publisher('test_msgs', multimodal_msgs, queue_size=10)
+
+def talker():
+    pub = rospy.Publisher('test_msgs',String, queue_size=10)
     rospy.init_node('tf_transforms')
-    rate = rospy.Rate(0.1) 
+    rate = rospy.Rate(10) 
     circ = Vector3()
     str1 = multimodal_msgs()
     pose = Pose()
+    hello_str = "hello world %s" % rospy.get_time()
+    rospy.loginfo(hello_str)
     while not rospy.is_shutdown():
         str1.selected = "red hawk"
         str1.type = "go"
@@ -36,7 +40,8 @@ if __name__ == '__main__':
         str1.sample.orientation.y = 0.0        
         str1.sample.orientation.z = 0.0
         str1.sample.orientation.w = 0.0
-        pub.publish(str1)
+        rospy.loginfo(hello_str)
+        pub.publish(hello_str)
         rate.sleep()
        # hello_str = "Have you seen any victims"
        # pub.publish(hello_str)
@@ -77,3 +82,10 @@ if __name__ == '__main__':
        # hello_str = "Search for a yellow cap"
        # pub.publish(hello_str)
        # rate.sleep()
+
+if __name__ == '__main__':
+  try:
+    talker()
+  except rospy.ROSInterruptException:
+    pass
+        
