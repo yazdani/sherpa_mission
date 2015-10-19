@@ -2,10 +2,14 @@
 
 import socket, pickle
 import rospy
+import os, sys
+import os.path
 from std_msgs.msg import String
 from multimodal_interpreter.msg import multimodal_msgs
 from multimodal_interpreter.msg import response_msgs
-import sys
+from multimodal_interpreter.msg import multistring
+from multimodal_interpreter.msg import multistrings
+
 
 pub=''
 str2=''
@@ -19,7 +23,11 @@ poly=''
 seg=''
 circ=''
 pose=''
-
+artest=''
+artest2=''
+path = "/home/yazdani/work/ros/indigo/catkin_ws/src/iai_rescue_mission/instruct_mission/src/tmp"
+outFile = "tmp.txt"
+commander=''
 
 def callback(date):
      declareVariables(date)
@@ -27,7 +35,6 @@ def callback(date):
      rplace = tmp.replace("_", " ")
      checkCommandType(rplace)
      sendSocket(rplace)
-
 
 def declareVariables(date):
      global sel
@@ -38,6 +45,7 @@ def declareVariables(date):
      global seg
      global circ
      global pose
+     global commander
      sel = date.selected
      dat = date.data
      dire = date.direction
@@ -46,7 +54,8 @@ def declareVariables(date):
      seg = date.segment
      circ = date.circ_area
      pose = date.sample
-
+     tmp = date.command
+     commander = tmp.replace("_", " ")
 
 def checkCommandType(date):
      global typ
@@ -63,8 +72,7 @@ def checkCommandType(date):
      i = ''.join(['w', 'h', 'e', 'r', 'e'])
      j = ''.join(['w', 'h', 'o'])
      k = ''.join(['w', 'h', 'o', 's', 'e'])
-     l = ''.join(['w', 'h', 'y'])
-     
+     l = ''.join(['w', 'h', 'y'])   
      
      if data[0] == a or data[0] == b or data[0] == c or data[0] == d or data[0] == e or data[0] == f or data[0] == g or data[0] == h or data[0] == i or data[0] == j or data[0] == k or data[0] == l:
           typ = "ask"
@@ -78,13 +86,18 @@ def sendSocket(date):
      c.send(tmp)
      sys.stdout.flush()
      str2 = c.recv(1024)
-     pub.publish(sel, str2, typ, dat, dire, loc, poly, seg, circ, pose)
+     with open(path+"/"+outFile,'w') as o:
+          o.write("cmd-type:"+typ+"\n")
+          o.write("agent:"+sel+"\n")
+          o.write("cmd:"+commander+"\n")
+          o.write("action:"+str2+"\n")
+     pub.publish(sel,str2,typ, dat, dire, loc, poly, seg, circ, pose)
 
 
 def startSocket():
     global pub
     global c
-    pub = rospy.Publisher('multimodal_msgs', response_msgs , queue_size=10)
+    pub = rospy.Publisher('multimodal_msgs', response_msgs, queue_size=10)
     rospy.init_node('tf_transforms2')
     rate = rospy.Rate(10)
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -98,4 +111,8 @@ def startSocket():
     s.close()
 
 if __name__ == '__main__':
-    startSocket()
+     if os.path.exists(path):
+          print "directory already exist"
+     else:
+          os.mkdir(path, 0755 );
+     startSocket()
