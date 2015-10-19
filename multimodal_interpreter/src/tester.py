@@ -10,18 +10,42 @@ from std_msgs.msg import String
 
 
 def talker():
-    pub = rospy.Publisher('test_msgs',String, queue_size=10)
+    pub = rospy.Publisher('test_msgs',multimodal_msgs, queue_size=10)
     rospy.init_node('tf_transforms')
-    rate = rospy.Rate(10) 
+    rate = rospy.Rate(0.1) 
     circ = Vector3()
     str1 = multimodal_msgs()
     pose = Pose()
     hello_str = "hello world %s" % rospy.get_time()
     rospy.loginfo(hello_str)
     while not rospy.is_shutdown():
-        str1.selected = "red hawk"
+     #   str1.selected = "red hawk"
+      #  str1.type = "go"
+      #  str1.command = "Go right of this tree"
+      #  str1.data = 1.0
+      #  str1.direction = [2.0, 0.0, 0.0]
+      #  str1.location = [3.0, 0.0, 0.0]
+      #  str1.confidence = 1.98
+      #  str1.polygonal_area = []
+      #  str1.segment = []
+      #  str1.circ_area.x = 0.0 
+      #  str1.circ_area.y = 0.0
+      #  str1.circ_area.z = 0.0
+      #  str1.radius = 0.0
+      #  str1.source = "gesture"
+      #  str1.sample.position.x = 0.0
+      #  str1.sample.position.y  = 0.0
+      #  str1.sample.position.z = 0.0
+      #  str1.sample.orientation.x = 0.0       
+      #  str1.sample.orientation.y = 0.0        
+      #  str1.sample.orientation.z = 0.0
+      #  str1.sample.orientation.w = 0.0
+      #  rospy.loginfo(str1)
+      #  pub.publish(str1)
+      #  rate.sleep()
+        str1.selected = "blue hawk"
         str1.type = "go"
-        str1.command = "Go right of this tree"
+        str1.command = "Go right"
         str1.data = 1.0
         str1.direction = [2.0, 0.0, 0.0]
         str1.location = [3.0, 0.0, 0.0]
@@ -40,8 +64,80 @@ def talker():
         str1.sample.orientation.y = 0.0        
         str1.sample.orientation.z = 0.0
         str1.sample.orientation.w = 0.0
-        rospy.loginfo(hello_str)
-        pub.publish(hello_str)
+        rospy.loginfo(str1)
+        pub.publish(str1)
+        rate.sleep()
+        str1.selected = "blue hawk"
+        str1.type = "go"
+        str1.command = "Go left"
+        str1.data = 1.0
+        str1.direction = [2.0, 0.0, 0.0]
+        str1.location = [3.0, 0.0, 0.0]
+        str1.confidence = 1.98
+        str1.polygonal_area = []
+        str1.segment = []
+        str1.circ_area.x = 0.0 
+        str1.circ_area.y = 0.0
+        str1.circ_area.z = 0.0
+        str1.radius = 0.0
+        str1.source = "gesture"
+        str1.sample.position.x = 0.0
+        str1.sample.position.y  = 0.0
+        str1.sample.position.z = 0.0
+        str1.sample.orientation.x = 0.0       
+        str1.sample.orientation.y = 0.0        
+        str1.sample.orientation.z = 0.0
+        str1.sample.orientation.w = 0.0
+        rospy.loginfo(str1)
+        pub.publish(str1)
+        rate.sleep()
+        str1.selected = "red hawk"
+        str1.type = "go"
+        str1.command = "Go ahead"
+        str1.data = 1.0
+        str1.direction = [2.0, 0.0, 0.0]
+        str1.location = [3.0, 0.0, 0.0]
+        str1.confidence = 1.98
+        str1.polygonal_area = []
+        str1.segment = []
+        str1.circ_area.x = 0.0 
+        str1.circ_area.y = 0.0
+        str1.circ_area.z = 0.0
+        str1.radius = 0.0
+        str1.source = "gesture"
+        str1.sample.position.x = 0.0
+        str1.sample.position.y  = 0.0
+        str1.sample.position.z = 0.0
+        str1.sample.orientation.x = 0.0       
+        str1.sample.orientation.y = 0.0        
+        str1.sample.orientation.z = 0.0
+        str1.sample.orientation.w = 0.0
+        rospy.loginfo(str1)
+        pub.publish(str1)
+        rate.sleep()
+        str1.selected = "red hawk"
+        str1.type = "go"
+        str1.command = "Take off"
+        str1.data = 1.0
+        str1.direction = [2.0, 0.0, 0.0]
+        str1.location = [3.0, 0.0, 0.0]
+        str1.confidence = 1.98
+        str1.polygonal_area = []
+        str1.segment = []
+        str1.circ_area.x = 0.0 
+        str1.circ_area.y = 0.0
+        str1.circ_area.z = 0.0
+        str1.radius = 0.0
+        str1.source = "gesture"
+        str1.sample.position.x = 0.0
+        str1.sample.position.y  = 0.0
+        str1.sample.position.z = 0.0
+        str1.sample.orientation.x = 0.0       
+        str1.sample.orientation.y = 0.0        
+        str1.sample.orientation.z = 0.0
+        str1.sample.orientation.w = 0.0
+        rospy.loginfo(str1)
+        pub.publish(str1)
         rate.sleep()
        # hello_str = "Have you seen any victims"
        # pub.publish(hello_str)
