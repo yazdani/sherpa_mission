@@ -7,60 +7,52 @@ import os.path
 from std_msgs.msg import String
 from multimodal_interpreter.msg import multimodal_msgs
 from multimodal_interpreter.msg import response_msgs
-from multimodal_interpreter.msg import multistring
-from multimodal_interpreter.msg import multistrings
+from multimodal_interpreter.msg import multimodal_values
 
-
+action=''
+directive=''
+cmd_typ=''
 pub=''
-str2=''
-str1=''
-sel=''
-dat=''
-typ=''
-dire=''
-loc=''
-poly=''
-seg=''
-circ=''
+#interpreted_cmd=''
+#str1=''
+agent=''
+#dat=''
+cmd_typ=''
+#dire=''
+#loc=''
+#poly=''
+#seg=''
+#circ=''
 pose=''
-artest=''
-artest2=''
+#artest=''
+#artest2=''
+item = ''
 path = "/home/yazdani/work/ros/indigo/catkin_ws/src/iai_rescue_mission/instruct_mission/src/tmp"
 outFile = "tmp.txt"
-commander=''
+#commander=''
 
-def callback(date):
-     declareVariables(date)
-     tmp = date.command
-     rplace = tmp.replace("_", " ")
-     checkCommandType(rplace)
-     sendSocket(rplace)
-
-def declareVariables(date):
-     global sel
-     global dat
-     global dire
-     global loc
-     global poly
-     global seg
-     global circ
+def callback(msg):
+     global agent 
      global pose
-     global commander
-     sel = date.selected
-     dat = date.data
-     dire = date.direction
-     loc = date.location
-     poly = date.polygonal_area
-     seg = date.segment
-     circ = date.circ_area
-     pose = date.sample
-     tmp = date.command
-     commander = tmp.replace("_", " ")
+     agent = msg.selected
+     tmp = msg.command
+     cmd = tmp.replace("_", " ")
+     checkCmdType(cmd)
+     checkAction(cmd)
+     pose = msg.direction
+     pose_tmp = str(pose).strip('[]')
+     with open(path+"/"+outFile,'w') as o:
+          o.write("agent: "+agent+"\n")
+          o.write("action: "+action+"\n")
+          o.write("type: "+cmd_typ+"\n")
+          o.write("directive: "+directive+"\n")
+          o.write("item: "+item+"\n")
+          o.write("location: "+pose_tmp+"\n")
+     pub.publish(agent,action,cmd_typ,directive,item,pose)
 
-def checkCommandType(date):
-     global typ
-     typ = date 
-     data = typ.split(" ")
+def checkCmdType(date):
+     global cmd_typ
+     data = date.split(" ")
      a = ''.join(['a', 'r', 'e'])
      b = ''.join(['d', 'o'])
      c = ''.join(['d', 'o', 'e', 's'])
@@ -75,30 +67,38 @@ def checkCommandType(date):
      l = ''.join(['w', 'h', 'y'])   
      
      if data[0] == a or data[0] == b or data[0] == c or data[0] == d or data[0] == e or data[0] == f or data[0] == g or data[0] == h or data[0] == i or data[0] == j or data[0] == k or data[0] == l:
-          typ = "ask"
+          cmd_typ = "ask"
      else:
-          typ = "order"
+          cmd_typ = "order"
           
 
-def sendSocket(date):
-     global str2
+def checkAction(date):
+     global action
+     global directive
+     global item
      tmp = date + '\n'
      c.send(tmp)
      sys.stdout.flush()
-     str2 = c.recv(1024)
-     with open(path+"/"+outFile,'w') as o:
-          o.write("cmd-type:"+typ+"\n")
-          o.write("agent:"+sel+"\n")
-          o.write("cmd:"+commander+"\n")
-          o.write("action:"+str2+"\n")
-     pub.publish(sel,str2,typ, dat, dire, loc, poly, seg, circ, pose)
+     interpreted_cmd = c.recv(1024)
+     test1 = interpreted_cmd.split(")")
+     test2 = test1[0].split('\n')
+     test3 = test2[0].split("(")
+     action = test3[0]
+     print test3[0]
+     print test3[1]
+     directive = test3[1]
+     if len(test3) > 2:
+          item = test3[3]
+     else:
+          item = ''
+    
+   
 
-
-def startSocket():
+def startConnection():
     global pub
     global c
-    pub = rospy.Publisher('multimodal_msgs', response_msgs, queue_size=10)
-    rospy.init_node('tf_transforms2')
+    pub = rospy.Publisher('multimodal_msgs', multimodal_values, queue_size=10)
+    rospy.init_node('multimodal')
     rate = rospy.Rate(10)
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(("yazdani", 1234))
@@ -110,9 +110,11 @@ def startSocket():
     s.shutdown(socket.SHUT_RDWR)
     s.close()
 
+
+
 if __name__ == '__main__':
      if os.path.exists(path):
           print "directory already exist"
      else:
           os.mkdir(path, 0755 );
-     startSocket()
+     startConnection()

@@ -72,6 +72,9 @@ add_message_files(
  #  ros2Tldl.msg
    multimodal_msgs.msg
    response_msgs.msg
+   multistring.msg
+   multistrings.msg
+   multimodal_values.msg
  )
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
@@ -90,9 +93,13 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 
-add_executable(tester src/tester.cpp)
-target_link_libraries(tester ${catkin_LIBRARIES})
-add_dependencies(tester multimodal_interpreter_generate_messages_cpp)
+#add_executable(tester src/tester.cpp)
+#target_link_libraries(tester ${catkin_LIBRARIES})
+#add_dependencies(tester multimodal_interpreter_generate_messages_cpp)
+
+#add_executable(interface src/interface.cpp)
+#target_link_libraries(interface ${catkin_LIBRARIES})
+#add_dependencies(interface multimodal_interpreter_generate_messages_cpp)
 
 catkin_package(
 #  INCLUDE_DIRS include
