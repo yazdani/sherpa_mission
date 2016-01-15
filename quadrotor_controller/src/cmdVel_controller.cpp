@@ -53,7 +53,7 @@ public:
     ROS_INFO("Client is registered, lets start the executing");
     publisher = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
     gms_c = nh_.serviceClient<gazebo_msgs::GetModelState>("/gazebo/get_model_state");
-    getmodelstate.request.model_name="quadrotor";
+    getmodelstate.request.model_name="red_hawk";
     
     geometry_msgs::Twist tw;
     publisher.publish(tw);
@@ -91,7 +91,7 @@ public:
       {
 	while(now_z < new_z)
 	  {
-	    tw.linear.z = 0.2;
+	    tw.linear.z = 0.6;
 	    publisher.publish(tw);
 	    ros::Duration(1.0).sleep();
 	    gms_c.call(getmodelstate);

@@ -16,8 +16,8 @@ add_action_files(
    DIRECTORY action
    FILES
    cmdVel.action
-#   Action2.action
  )
+
 #SWITCH THIS ON and OFF then u got ur header files FIXBUG
 #generate_messages(
 #DEPENDENCIES
